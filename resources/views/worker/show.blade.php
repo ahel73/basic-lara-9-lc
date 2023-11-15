@@ -1,3 +1,6 @@
+@extends('layout.main')
+
+@section('content')
 <div>
     <hr>
 
@@ -14,3 +17,4 @@
     </div>
     <hr>
 </div>
+@endsection
