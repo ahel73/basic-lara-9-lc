@@ -15,4 +15,9 @@ class Worker extends Model
     {
         return $this->hasOne(Profile::class, 'worker_id', 'id');
     }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id', 'id' );
+    }
 }
