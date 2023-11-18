@@ -32,8 +32,19 @@ class DevCommand extends Command
      */
     public function handle()
     {
-        $worker = Worker::find(1);
-        dd($worker->projects->toArray());
+//        $worker = Worker::find(1);
+//        dump($worker->projects->toArray());
+
+        // Добавление связей в сводную таблицу проектов и рабочих по ним
+        // $worker = Worker::find(1);
+        // $project = Project::find(1);
+        // $project->workers()->attach($worker->id); // Добавляем связь проекта с рабочим
+        // $project->workers()->toggle($worker->id); // Если есть аналогичная связь то удаляет если нет то добавляет. Можно передать массив
+        // $project->workers()->attach([1,2,3]); // Для каждого эллемента массива добавляется связь
+        // $project->workers()->sync(1); // Удаляет все связи и добавляет текущую
+        // $project->workers()->detach(); // Удаляет все связи
+        // dd($project->workers->toArray());
+
         return 0;
     }
 
