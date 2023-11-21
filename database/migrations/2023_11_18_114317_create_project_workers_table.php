@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->index()->constrained('projects');
             $table->foreignId('worker_id')->index()->constrained('workers');
-            $table->unique('project_id', 'worker_id');
+            $table->unique(['project_id', 'worker_id']);
             $table->timestamps();
         });
     }
