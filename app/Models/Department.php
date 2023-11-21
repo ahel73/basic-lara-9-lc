@@ -12,6 +12,8 @@ class Department extends Model
     protected $table = 'departments';
     protected $guarded = false;
 
+    // Получить руководителя депортамента, через его должность которая привзяна к депортманту
+    // 1 к 1 через общую сущность
     public function boss()
     {
         return $this->hasOneThrough(
@@ -22,6 +24,19 @@ class Department extends Model
             'id',
             'id'
         )
-        ->where('position_id', 4);
+        ->where('title', 'Boss');
+    }
+
+    // Получить всех работников из депортамента по их должностям которые привязаны к депортаменту
+    // Один ко многим через общую сущность
+    public function workers()
+    {
+        return $this->hasManyThrough(
+            Worker::class,
+            Position::class,
+            'department_id' ,
+            'position_id',
+            'id',
+            'id');
     }
 }

@@ -36,11 +36,11 @@ class DevCommand extends Command
           //$this->prepareData();
          //$this->prepareManyToMany();
 
-//        $depatment = Department::find(1);
-//        dd($depatment->boss->toArray());
+        $depatment = Department::find(1);
+        dd($depatment->workers->toArray());
 
-        $worker = Worker::find(5);
-        dump($worker->position->dapartment->toArray());
+//        $worker = Worker::find(5);
+//        dump($worker->position->dapartment->toArray());
 
         return 0;
     }

@@ -12,6 +12,8 @@ class Profile extends Model
     protected $table = 'profiles';
     protected $guarded = false;
 
+    // 1 к 1 обратная связь
+    // получаем рабочего по профелю
     public function worker()
     {
         return $this->belongsTo(Worker::class, 'worker_id', 'id');
