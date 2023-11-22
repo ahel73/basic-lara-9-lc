@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Avatar;
+use App\Models\Client;
 use App\Models\Department;
 use App\Models\Position;
 use App\Models\Profile;
@@ -33,14 +35,19 @@ class DevCommand extends Command
      */
     public function handle()
     {
-          //$this->prepareData();
-         //$this->prepareManyToMany();
+//          $this->prepareData();
+//         $this->prepareManyToMany();
 
-        $depatment = Department::find(1);
-        dd($depatment->workers->toArray());
+        // Создаём клиента
+        Client::create(['name' => 'Maria']);
 
-//        $worker = Worker::find(5);
-//        dump($worker->position->dapartment->toArray());
+        // Добавляем аватар для клиента
+        $client = Client::find(1);
+        $client->avatar()->create(['path' => 'some client 1']);
+
+        // Получаем клиента кому принадлежит аватар
+        $avatar = Avatar::find(3);
+        dd($avatar->avatarable->toArray());
 
         return 0;
     }

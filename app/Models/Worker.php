@@ -31,4 +31,10 @@ class Worker extends Model
     {
         return $this->belongsToMany(Project::class, 'project_workers', 'worker_id', 'project_id', );
     }
+
+    // Полиморфная связь 1 к 1 рабочий и его аватарка
+    public function avatar()
+    {
+        return $this->morphOne(Avatar::class, 'avatarable');
+    }
 }
