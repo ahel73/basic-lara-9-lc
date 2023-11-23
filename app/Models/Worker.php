@@ -37,4 +37,10 @@ class Worker extends Model
     {
         return $this->morphOne(Avatar::class, 'avatarable');
     }
+
+    // Полиморфная связь 1 ко многим получаем все отзывы которые оставлены рабочему
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'reviewable');
+    }
 }

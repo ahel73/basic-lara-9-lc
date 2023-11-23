@@ -35,25 +35,34 @@ class DevCommand extends Command
      */
     public function handle()
     {
-//          $this->prepareData();
+//         $this->prepareData();
 //         $this->prepareManyToMany();
 
-        // Создаём клиента
-        Client::create(['name' => 'Maria']);
+        $worker = Worker::find(5);
+        $client = Client::find(2);
 
-        // Добавляем аватар для клиента
-        $client = Client::find(1);
-        $client->avatar()->create(['path' => 'some client 1']);
 
-        // Получаем клиента кому принадлежит аватар
-        $avatar = Avatar::find(3);
-        dd($avatar->avatarable->toArray());
+        $worker->reviews()->create(['body' => 'reviews 1 worker 5']);
+        $worker->reviews()->create(['body' => 'reviews 2 worker 5']);
+        $worker->reviews()->create(['body' => 'reviews 3 worker 5']);
+
+        $client->reviews()->create(['body' => 'reviews 1 $client 2']);
+        $client->reviews()->create(['body' => 'reviews 2 $client 2']);
+        $client->reviews()->create(['body' => 'reviews 3 $client 2']);
+
+        dump($worker->reviews->toArray());
+        dump('клиенть');
+        dump($client->reviews->toArray());
 
         return 0;
     }
 
     protected static function prepareData()
     {
+        Client::create(['name' => 'Bod']);
+        Client::create(['name' => 'Jon']);
+        Client::create(['name' => 'Elena']);
+
         $department1 = Department::create(['title' => 'IT']);
         $department2 = Department::create(['title' => 'Analytics']);
 
