@@ -43,4 +43,10 @@ class Worker extends Model
     {
         return $this->morphMany(Review::class, 'reviewable');
     }
+
+    // Полиморфная связь многие ко многим много рабочих у которых много тегов
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
 }

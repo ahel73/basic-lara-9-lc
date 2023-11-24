@@ -9,6 +9,7 @@ use App\Models\Position;
 use App\Models\Profile;
 use App\Models\Project;
 use App\Models\ProjectWorker;
+use App\Models\Tag;
 use App\Models\Worker;
 use Illuminate\Console\Command;
 
@@ -41,18 +42,14 @@ class DevCommand extends Command
         $worker = Worker::find(5);
         $client = Client::find(2);
 
+        Tag::create(['title' => 'developer']);
+        Tag::create(['title' => 'big boss']);
+        Tag::create(['title' => 'tine']);
 
-        $worker->reviews()->create(['body' => 'reviews 1 worker 5']);
-        $worker->reviews()->create(['body' => 'reviews 2 worker 5']);
-        $worker->reviews()->create(['body' => 'reviews 3 worker 5']);
+        $worker->tags()->attach([1,3]);
+        $client->tags()->attach([2,3]);
 
-        $client->reviews()->create(['body' => 'reviews 1 $client 2']);
-        $client->reviews()->create(['body' => 'reviews 2 $client 2']);
-        $client->reviews()->create(['body' => 'reviews 3 $client 2']);
 
-        dump($worker->reviews->toArray());
-        dump('клиенть');
-        dump($client->reviews->toArray());
 
         return 0;
     }
