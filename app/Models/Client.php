@@ -25,6 +25,7 @@ class Client extends Model
     }
 
     // Полиморфная связь многие ко многим много клиентов у которых много тегов
+    // Получаем все теги по рабочему
     public function tags()
     {
         return $this->morphToMany(Tag::class, 'taggable');

@@ -39,15 +39,11 @@ class DevCommand extends Command
 //         $this->prepareData();
 //         $this->prepareManyToMany();
 
-        $worker = Worker::find(5);
-        $client = Client::find(2);
+        $pos = Position::first();
+        dump($pos->toArray());
+//        dump($pos->oldWorker->toArray());
+        dump($pos->nameWorker('Ivan')->toArray());
 
-        Tag::create(['title' => 'developer']);
-        Tag::create(['title' => 'big boss']);
-        Tag::create(['title' => 'tine']);
-
-        $worker->tags()->attach([1,3]);
-        $client->tags()->attach([2,3]);
 
 
 

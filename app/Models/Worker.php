@@ -45,6 +45,7 @@ class Worker extends Model
     }
 
     // Полиморфная связь многие ко многим много рабочих у которых много тегов
+    // Получаем все теги по рабочему
     public function tags()
     {
         return $this->morphToMany(Tag::class, 'taggable');

@@ -23,4 +23,16 @@ class Position extends Model
     {
         return $this->belongsTo(Department::class, 'department_id');
     }
+
+    // Полиморвные отношения получаем самого старого работника
+    public function oldWorker()
+    {
+        return $this->hasOne(Worker::class)->ofMany('age', 'MAX');
+    }
+
+    // Полиморвные отношения получаем работника по имени
+    public function nameWorker($name)
+    {
+        return $this->hasOne(Worker::class)->where('name', $name)->get();
+    }
 }
