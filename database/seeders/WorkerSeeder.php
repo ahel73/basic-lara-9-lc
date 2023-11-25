@@ -15,6 +15,7 @@ class WorkerSeeder extends Seeder
      */
     public function run()
     {
-        Worker::factory(20)->create();
+        // Создаём связь 1 к 1 с профайлами поэтому переносим создание рабочих в сидер профайлов
+        // Worker::factory(20)->create();
     }
 }
