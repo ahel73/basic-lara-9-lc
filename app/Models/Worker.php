@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\Worker\CreatedEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +11,18 @@ class Worker extends Model
     use HasFactory;
     protected $table = 'workers';
     protected $guarded = false;
+
+    protected static function booted()
+    {
+        // $model зарезервированное слово содержащие модель созданного рабочего
+        static::created(function ($model) {
+            // инициализируем событие
+            event(new CreatedEvent($model));
+
+            // можно событие обработать внутри модели
+            // Profile::create(['worker_id' => $model->id]);
+        });
+    }
 
     // 1 к 1
     // Получить профиль рабочего
