@@ -22,6 +22,17 @@ class Worker extends Model
             // можно событие обработать внутри модели
             // Profile::create(['worker_id' => $model->id]);
         });
+
+        // Событие обновления срабатывает только если реально произошли обновления, если добавлены теже данные то события не будет
+        static::updated(function ($model) {
+
+            if ($model->wasChanged()) {
+                dump('изменено');
+            } else {
+                dump('не изменено');
+            }
+            dd($model);
+        });
     }
 
     // 1 к 1
