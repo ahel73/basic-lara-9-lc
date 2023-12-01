@@ -27,11 +27,11 @@ class Worker extends Model
         static::updated(function ($model) {
 
             if ($model->wasChanged()) {
-                dump('изменено');
+                //dump('изменено');
             } else {
-                dump('не изменено');
+                //dump('не изменено');
             }
-            dd($model);
+            //dd($model);
         });
     }
 

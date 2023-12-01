@@ -40,7 +40,7 @@
                     <a href="{{ route('workers.edit', $worker->id) }}">Редактировать</a>
                 </div>
                 <div>
-                    <form action="{{ route('workers.delete', $worker->id) }}" method="post">
+                    <form action="{{ route('workers.destroy', $worker->id) }}" method="post">
                         @csrf
                         @method('Delete')
                         <input type="submit" value="Удалить">

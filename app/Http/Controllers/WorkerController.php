@@ -73,7 +73,7 @@ class WorkerController extends Controller
         return redirect()->route('workers.show', $worker->id);
     }
 
-    public function delete(Worker $worker)
+    public function destroy(Worker $worker)
     {
         $worker->delete();
         return redirect()->route('workers.index');
