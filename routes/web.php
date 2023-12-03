@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('workers', \App\Http\Controllers\WorkerController::class)->middleware(['auth', 'isAdmin']);
+Route::resource('workers', \App\Http\Controllers\WorkerController::class)->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
